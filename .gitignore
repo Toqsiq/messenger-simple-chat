@@ -1,0 +1,21 @@
+# Зависимости
+node_modules/
+
+# Папка со сборкой
+dist/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Логи
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Игнорируем лишние файлы в корне проекта
+node_modules/
+package.json
+package-lock.json
+*.js
+!simple-chat/**/*.js
