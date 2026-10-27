@@ -6,6 +6,12 @@ const messagesList = document.getElementById('chat-messages');
 
 let savedMessages = JSON.parse(localStorage.getItem('chat-history')) || [];
 
+// Защита от старых или битых данных
+savedMessages = savedMessages.filter(function (message) {
+    // Оставляем только те сообщения, которые являются объектами и имеют текст
+    return typeof message === 'object' && message !== null && message.text;
+});
+
 
 function createMessageBubble(message) {
     const newBubble = document.createElement('div');
