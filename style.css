@@ -52,6 +52,7 @@ body {
     align-self: flex-start;
     font-size: 15px;
     line-height: 1.4;
+    word-break: break-word;
 }
 
 
