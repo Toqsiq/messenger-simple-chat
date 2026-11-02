@@ -13,14 +13,13 @@ function initState() {
         return typeof message === 'object' && message !== null && message.text;
     });
     form.addEventListener('submit', handleSubmit);
-    loadHistory(savedMessages);
+    loadHistory(savedMessages, messagesList);
 }
 
-function createMessageBubble(message) {
+function createMessageBubble(message, messagesContainer) { // <--- добавили параметр
     const newBubble = document.createElement('div');
     newBubble.classList.add('message-bubble');
 
-    // Создаем HTML-структуру внутри пузыря: имя, текст и время
     newBubble.innerHTML = `
     <div class="message-info">
       <span class="sender">${message.sender}</span>
@@ -29,19 +28,20 @@ function createMessageBubble(message) {
     <div class="message-text">${message.text}</div>
   `;
 
-    messagesList.appendChild(newBubble);
+    messagesContainer.appendChild(newBubble); // <--- заменили messagesList на messagesContainer
 }
 
 
-function loadHistory(messages) { // <--- добавили (messages)
-    messages.forEach(function (message) { // <--- заменили savedMessages на messages
-        createMessageBubble(message);
+function loadHistory(messages, container) {
+    messages.forEach(function (message) {
+        createMessageBubble(message, container);
     });
-
-    messagesList.scrollTop = messagesList.scrollHeight;
+    scrollToBottom(container); // <--- заменили
 }
 
-
+function scrollToBottom(container) {
+    container.scrollTop = container.scrollHeight;
+}
 
 
 
@@ -69,14 +69,14 @@ function handleSubmit(event) {
     };
 
     // Отправляем объект в функцию отрисовки
-    createMessageBubble(newMessage);
+    createMessageBubble(newMessage, messagesList);
 
     // Сохраняем объект в массив и в localStorage
     savedMessages.push(newMessage);
     localStorage.setItem('chat-history', JSON.stringify(savedMessages));
 
     input.value = '';
-    messagesList.scrollTop = messagesList.scrollHeight;
+    scrollToBottom(messagesList);
 }
 
 
