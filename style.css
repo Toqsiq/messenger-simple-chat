@@ -101,6 +101,7 @@ body {
 .message-info {
     display: flex;
     justify-content: space-between;
+    /* Это раздвигает элементы по краям */
     font-size: 11px;
     color: #888;
     margin-bottom: 4px;
@@ -109,5 +110,6 @@ body {
 .sender {
     font-weight: bold;
     color: #007AFF;
-    /* Синий цвет для имени */
+    margin-right: 10px;
+    /* <--- ВОТ ЭТА СТРОЧКА добавит отступ справа от имени */
 }
