@@ -49,6 +49,12 @@ function handleSubmit(event) {
     const text = input.value.trim();
     if (text === '') return;
 
+    // НОВАЯ ПРОВЕРКА:
+    if (text.length > 200) {
+        alert('Сообщение слишком длинное! Максимум 200 символов.');
+        return;
+    }
+
     // Получаем текущее время в формате ЧЧ:ММ
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
