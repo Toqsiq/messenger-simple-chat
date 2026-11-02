@@ -2,16 +2,19 @@ import './index.css';
 const form = document.querySelector('.form');
 const input = document.querySelector('.form-input');
 const messagesList = document.getElementById('chat-messages');
+let savedMessages = [];
 
+function initState() {
+    savedMessages = JSON.parse(localStorage.getItem('chat-history')) || [];
 
-let savedMessages = JSON.parse(localStorage.getItem('chat-history')) || [];
-
-// Защита от старых или битых данных
-savedMessages = savedMessages.filter(function (message) {
-    // Оставляем только те сообщения, которые являются объектами и имеют текст
-    return typeof message === 'object' && message !== null && message.text;
-});
-
+    // Защита от старых или битых данных
+    savedMessages = savedMessages.filter(function (message) {
+        // Оставляем только те сообщения, которые являются объектами и имеют текст
+        return typeof message === 'object' && message !== null && message.text;
+    });
+    form.addEventListener('submit', handleSubmit);
+    loadHistory(savedMessages);
+}
 
 function createMessageBubble(message) {
     const newBubble = document.createElement('div');
@@ -30,16 +33,15 @@ function createMessageBubble(message) {
 }
 
 
-function loadHistory() {
-    savedMessages.forEach(function (message) {
-        createMessageBubble(message); // Передаем весь объект message
+function loadHistory(messages) { // <--- добавили (messages)
+    messages.forEach(function (message) { // <--- заменили savedMessages на messages
+        createMessageBubble(message);
     });
 
     messagesList.scrollTop = messagesList.scrollHeight;
 }
 
 
-loadHistory();
 
 
 
@@ -77,4 +79,5 @@ function handleSubmit(event) {
     messagesList.scrollTop = messagesList.scrollHeight;
 }
 
-form.addEventListener('submit', handleSubmit);
+
+initState();
