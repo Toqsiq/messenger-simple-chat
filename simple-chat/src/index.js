@@ -52,8 +52,8 @@ function handleSubmit(event) {
     if (text === '') return;
 
     // НОВАЯ ПРОВЕРКА:
-    if (text.length > 200) {
-        alert('Сообщение слишком длинное! Максимум 200 символов.');
+    if (text.length > 600) {
+        alert('Сообщение слишком длинное! Максимум 600 символов.');
         return;
     }
 
