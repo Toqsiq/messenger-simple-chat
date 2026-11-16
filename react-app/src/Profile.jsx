@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { usePageMeta } from './usePageMeta';
 
 function Profile() {
+    usePageMeta('Профиль', '👤')
     // 1. Состояние для данных профиля
     const [name, setName] = useState(() => localStorage.getItem('profile-name') || '');
     const [bio, setBio] = useState(() => localStorage.getItem('profile-bio') || '');

@@ -10,7 +10,7 @@ function MessageForm({ inputText, setInputText, onSubmit }) {
 
             />
             <button type="submit" className="send-btn">
-                <span className="material-icons">send</span>
+                <span className="material-icons">near_me</span>
             </button>
         </form>
     );

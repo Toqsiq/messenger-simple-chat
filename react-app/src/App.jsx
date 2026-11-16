@@ -1,3 +1,4 @@
+import { usePageMeta } from './usePageMeta';
 import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import MessageList from './MessageList';
@@ -12,7 +13,7 @@ function Chat() {
     const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
     return saved.filter(msg => typeof msg === 'object' && msg?.text);
   });
-
+  usePageMeta('Чат', '💬');
   // 2. Состояние для поля ввода
   const [inputText, setInputText] = useState('');
 
@@ -132,6 +133,7 @@ function Chat() {
 
 // --- Компонент Главной страницы (заглушка) ---
 function Home() {
+  usePageMeta('Главная', '🏠'); // <--- ДОБАВЬ ВОТ ЭТУ СТРОКУ
   return <h2>Главная страница</h2>;
 }
 
