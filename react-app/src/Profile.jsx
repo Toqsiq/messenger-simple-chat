@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePageMeta } from './usePageMeta';
+import { usePageMeta } from './hooks/usePageMeta';
 
 function Profile() {
     usePageMeta('Профиль', '👤')

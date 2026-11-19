@@ -1,10 +1,11 @@
-import { usePageMeta } from './usePageMeta';
+import { usePageMeta } from './hooks/usePageMeta';
 import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
 import Profile from './Profile';
 import './App.css';
+import Home from './components/Home/Home';
 
 function getCurrentTime() {
   return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -119,10 +120,6 @@ function Chat() {
 
 
 
-function Home() {
-  usePageMeta('Главная', '🏠');
-  return <h2>Главная страница</h2>;
-}
 
 
 function App() {
