@@ -15,7 +15,4 @@ yarn-error.log*
 
 # Игнорируем лишние файлы в корне проекта
 node_modules/
-package.json
-package-lock.json
-*.js
-!simple-chat/**/*.js
+
