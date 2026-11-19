@@ -6,18 +6,18 @@ import MessageForm from './MessageForm';
 import Profile from './Profile';
 import './App.css';
 
-// --- Компонент самого ЧАТА ---
+
 function Chat() {
-  // 1. Состояние для сообщений (загружаем из localStorage)
+
   const [messages, setMessages] = useState(() => {
     const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
     return saved.filter(msg => typeof msg === 'object' && msg?.text);
   });
   usePageMeta('Чат', '💬');
-  // 2. Состояние для поля ввода
+
   const [inputText, setInputText] = useState('');
 
-  // 3. Сохраняем в localStorage при каждом изменении messages
+
   useEffect(() => {
     localStorage.setItem('chat-history', JSON.stringify(messages));
   }, [messages]);
@@ -25,36 +25,36 @@ function Chat() {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }; // <--- Закрыли scrollToBottom
+  };
 
   const clearChat = () => {
     setMessages([]);
     localStorage.removeItem('chat-history');
-  }; // <--- Закрыли clearChat
+  };
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-  // 4. Функция отправки (бывший handleSubmit)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = inputText.trim();
 
     if (text === '') return;
 
-    // Получаем имя из профиля
+
     const senderName = localStorage.getItem('profile-name') || 'Я';
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     let newMessages = [];
 
-    // Если текст длиннее 600 символов, режем его на части
+
     if (text.length > 600) {
-      // Разбиваем текст на слова, чтобы не рвать слова посередине
+
       const words = text.split(' ');
       let currentChunk = '';
 
       words.forEach(word => {
-        // Если добавление слова превысит 600 символов, сохраняем текущий кусок и начинаем новый
+
         if ((currentChunk + word).length > 600) {
           newMessages.push({
             text: currentChunk.trim(),
@@ -67,7 +67,7 @@ function Chat() {
         }
       });
 
-      // Добавляем остаток текста
+
       if (currentChunk.trim()) {
         newMessages.push({
           text: currentChunk.trim(),
@@ -76,7 +76,7 @@ function Chat() {
         });
       }
     } else {
-      // Если текст короткий, создаем одно сообщение
+
       newMessages.push({
         text: text,
         sender: senderName,
@@ -84,7 +84,7 @@ function Chat() {
       });
     }
 
-    // Добавляем все новые сообщения в общий массив
+
     setMessages([...messages, ...newMessages]);
     setInputText('');
   };
@@ -95,28 +95,28 @@ function Chat() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
 
-      {/* Контейнер для кнопки (невидимый, без фона) */}
+      { }
       <div style={{ width: '100%', maxWidth: '450px', display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
         <button
           onClick={clearChat}
           style={{
             padding: '6px 12px',
-            backgroundColor: 'transparent', // Прозрачный фон
-            color: 'var(--color-primary)',   // Синий цвет, как у иконок
-            border: 'none',                  // Без рамки
+            backgroundColor: 'transparent',
+            color: 'var(--color-primary)',
+            border: 'none',
             cursor: 'pointer',
             fontSize: '14px',
             fontWeight: 'bold',
             transition: 'opacity 0.2s'
           }}
-          onMouseEnter={(e) => e.target.style.opacity = '0.7'} // Эффект при наведении
+          onMouseEnter={(e) => e.target.style.opacity = '0.7'}
           onMouseLeave={(e) => e.target.style.opacity = '1'}
         >
           Очистить чат
         </button>
       </div>
 
-      {/* Сам чат (возвращаем ему класс для стилей) */}
+      { }
       <div className="chat-wrapper">
         <MessageList messages={messages} messagesEndRef={messagesEndRef} />
         <MessageForm
@@ -131,13 +131,13 @@ function Chat() {
 }
 
 
-// --- Компонент Главной страницы (заглушка) ---
+
 function Home() {
-  usePageMeta('Главная', '🏠'); // <--- ДОБАВЬ ВОТ ЭТУ СТРОКУ
+  usePageMeta('Главная', '🏠');
   return <h2>Главная страница</h2>;
 }
 
-// --- Главный компонент приложения ---
+
 function App() {
   return (
     <BrowserRouter>

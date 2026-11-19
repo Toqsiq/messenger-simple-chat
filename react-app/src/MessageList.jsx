@@ -10,7 +10,7 @@ function MessageList({ messages, messagesEndRef }) {
                     <div className="message-text">{message.text}</div>
                 </div>
             ))}
-            {/* Якорь для автоскролла */}
+            { }
             <div ref={messagesEndRef} />
         </div>
     );

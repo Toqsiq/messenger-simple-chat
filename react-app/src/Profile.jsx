@@ -3,20 +3,20 @@ import { usePageMeta } from './usePageMeta';
 
 function Profile() {
     usePageMeta('Профиль', '👤')
-    // 1. Состояние для данных профиля
+
     const [name, setName] = useState(() => localStorage.getItem('profile-name') || '');
     const [bio, setBio] = useState(() => localStorage.getItem('profile-bio') || '');
 
-    // 2. Состояние: редактируем мы сейчас или просматриваем (по умолчанию — просмотр, если имя уже есть)
+
     const [isEditing, setIsEditing] = useState(() => {
-        return !localStorage.getItem('profile-name'); // Если имени нет, сразу открываем редактирование
+        return !localStorage.getItem('profile-name');
     });
 
-    // 3. Сохранение
+
     const handleSave = () => {
         localStorage.setItem('profile-name', name);
         localStorage.setItem('profile-bio', bio);
-        setIsEditing(false); // Выключаем режим редактирования
+        setIsEditing(false);
     };
 
     return (
@@ -24,7 +24,7 @@ function Profile() {
             <h1>Мой профиль</h1>
 
             {isEditing ? (
-                // --- РЕЖИМ РЕДАКТИРОВАНИЯ (форма) ---
+
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <label>
                         Имя:
@@ -52,7 +52,7 @@ function Profile() {
                     </button>
                 </div>
             ) : (
-                // --- РЕЖИМ ПРОСМОТРА (карточка) ---
+
                 <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
                     <h2 style={{ marginTop: 0, color: '#333' }}>{name || 'Без имени'}</h2>
                     <p style={{ color: '#666', whiteSpace: 'pre-wrap' }}>{bio || 'Пока нет описания...'}</p>
