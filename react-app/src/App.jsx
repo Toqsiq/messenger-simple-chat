@@ -6,6 +6,9 @@ import MessageForm from './MessageForm';
 import Profile from './Profile';
 import './App.css';
 
+function getCurrentTime() {
+  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
 
 function Chat() {
 
@@ -45,7 +48,7 @@ function Chat() {
 
 
 
-    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const time = getCurrentTime();
 
     let newMessages = [];
 
