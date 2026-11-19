@@ -18,9 +18,6 @@ function Chat() {
   const [inputText, setInputText] = useState('');
 
 
-  useEffect(() => {
-    localStorage.setItem('chat-history', JSON.stringify(messages));
-  }, [messages]);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -31,7 +28,10 @@ function Chat() {
     setMessages([]);
     localStorage.removeItem('chat-history');
   };
+
+
   useEffect(() => {
+    localStorage.setItem('chat-history', JSON.stringify(messages));
     scrollToBottom();
   }, [messages]);
 
