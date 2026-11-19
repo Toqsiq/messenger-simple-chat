@@ -14,3 +14,21 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+# Messenger Project (JS + React)
+
+Этот репозиторий содержит две версии мессенджера:
+1. `simple-chat` — старая версия на чистом JavaScript (Webpack).
+2. `react-app` — новая версия на React (Vite).
+
+## 🚀 Как запустить React-версию (актуальная)
+
+Так как React-проект находится в подпапке, для запуска нужно сначала перейти в неё:
+
+1. Откройте терминал в корне этого репозитория.
+2. Перейдите в папку с React-проектом:
+   ```bash
+   cd react-app
+   npm install
+   npm run dev
+   Откройте в браузере ссылку, которую покажет терминал (обычно http://localhost:5173).
