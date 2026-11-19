@@ -9,6 +9,8 @@ import './App.css';
 
 function Chat() {
 
+  const [senderName] = useState(() => localStorage.getItem('profile-name') || 'Я');
+
   const [messages, setMessages] = useState(() => {
     const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
     return saved.filter(msg => typeof msg === 'object' && msg?.text);
@@ -42,7 +44,7 @@ function Chat() {
     if (text === '') return;
 
 
-    const senderName = localStorage.getItem('profile-name') || 'Я';
+
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     let newMessages = [];
