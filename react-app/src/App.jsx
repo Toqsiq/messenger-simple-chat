@@ -98,30 +98,13 @@ function Chat() {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-
-      { }
-      <div style={{ width: '100%', maxWidth: '450px', display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
-        <button
-          onClick={clearChat}
-          style={{
-            padding: '6px 12px',
-            backgroundColor: 'transparent',
-            color: 'var(--color-primary)',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            transition: 'opacity 0.2s'
-          }}
-          onMouseEnter={(e) => e.target.style.opacity = '0.7'}
-          onMouseLeave={(e) => e.target.style.opacity = '1'}
-        >
+    <div className="chat-container">
+      <div className="clear-btn-container">
+        <button onClick={clearChat} className="clear-btn">
           Очистить чат
         </button>
       </div>
 
-      { }
       <div className="chat-wrapper">
         <MessageList messages={messages} messagesEndRef={messagesEndRef} />
         <MessageForm
@@ -130,7 +113,6 @@ function Chat() {
           onSubmit={handleSubmit}
         />
       </div>
-
     </div>
   );
 }
@@ -146,7 +128,7 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
-      <nav style={{ padding: '20px', display: 'flex', gap: '20px', borderBottom: '1px solid #444' }}>
+      <nav className="main-nav">
         <Link to="/">Главная</Link>
         <Link to="/chat">Чат</Link>
         <Link to="/profile">Профиль</Link>
