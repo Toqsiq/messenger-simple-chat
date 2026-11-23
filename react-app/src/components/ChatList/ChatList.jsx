@@ -1,7 +1,9 @@
+import Header from '../Header/Header';
 import { useState, useEffect } from 'react';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import ChatItem from '../ChatItem/ChatItem';
 import './ChatList.css';
+
 
 function ChatList() {
     usePageMeta('Чаты', '💬');
@@ -45,11 +47,7 @@ function ChatList() {
 
     return (
         <div className="chat-list-container">
-            <header className="chat-list-header">
-                <button className="header-btn">☰</button>
-                <h1 className="header-title">Чаты</h1>
-                <button className="header-btn">🔍</button>
-            </header>
+            <Header title="Чаты" />
 
             <div className="chat-list-items">
                 {chats.length === 0 ? (

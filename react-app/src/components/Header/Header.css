@@ -1,0 +1,37 @@
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--bg-chat);
+    border-bottom: 1px solid var(--text-light-gray);
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.header-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.header-btn:hover {
+    background-color: var(--bg-messages);
+}
+
+
+.header-btn .material-icons {
+    font-size: 24px;
+}

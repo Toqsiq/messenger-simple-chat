@@ -1,7 +1,7 @@
 .chat-item-link {
-  text-decoration: none; /* Убираем подчеркивание */
-  color: inherit;        /* Наследуем цвет текста */
-  display: block;        /* Чтобы ссылка занимала всю ширину */
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .chat-item {
