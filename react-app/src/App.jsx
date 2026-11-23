@@ -1,9 +1,5 @@
 import Chat from './components/Chat/Chat';
-import { usePageMeta } from './hooks/usePageMeta';
-import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import MessageList from './MessageList';
-import MessageForm from './MessageForm';
 import Profile from './components/Profile/Profile';
 import './App.css';
 import Home from './components/Home/Home';

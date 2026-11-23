@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import MessageList from '../../MessageList';
-import MessageForm from '../../MessageForm';
 import { usePageMeta } from '../../hooks/usePageMeta';
+import MessageList from '../Message/MessageList';
+import MessageForm from '../Message/MessageForm';
 
 
 function getCurrentTime() {
