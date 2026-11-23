@@ -17,6 +17,8 @@ function ChatList() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [newChatName, setNewChatName] = useState('');
 
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         localStorage.setItem('chat-list', JSON.stringify(chats));
@@ -45,9 +47,22 @@ function ChatList() {
         setNewChatName('');
     };
 
+    const filteredChats = chats.filter(chat => {
+        const query = searchQuery.toLowerCase();
+        
+        return chat.name.toLowerCase().includes(query) ||
+            chat.lastMessage.toLowerCase().includes(query);
+    });
+
     return (
         <div className="chat-list-container">
-            <Header title="Чаты" />
+            <Header
+                title="Чаты"
+                onSearchClick={() => setIsSearchOpen(!isSearchOpen)}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                isSearchOpen={isSearchOpen}
+            />
 
             <div className="chat-list-items">
                 {chats.length === 0 ? (
@@ -56,7 +71,7 @@ function ChatList() {
                         <p>Нажмите <strong>+</strong>, чтобы начать общение!</p>
                     </div>
                 ) : (
-                    chats.map((chat) => (
+                    filteredChats.map((chat) => (
                         <ChatItem
                             key={chat.id}
                             name={chat.name}
