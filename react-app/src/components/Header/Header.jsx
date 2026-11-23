@@ -1,9 +1,9 @@
 import './Header.css';
 
-function Header({ title, onSearchClick, searchQuery, setSearchQuery, isSearchOpen }) {
+function Header({ title, onSearchClick, searchQuery, setSearchQuery, isSearchOpen, onMenuClick }) {
     return (
         <header className="chat-header">
-            <button className="header-btn burger-btn">
+            <button className="header-btn burger-btn" onClick={onMenuClick}>
                 <span className="material-icons">menu</span>
             </button>
 

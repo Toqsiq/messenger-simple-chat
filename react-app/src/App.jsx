@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chats" element={<ChatList />} /> { }
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/:id" element={<Chat />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
