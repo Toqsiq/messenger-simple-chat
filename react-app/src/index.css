@@ -233,3 +233,73 @@ body {
   gap: 20px;
   border-bottom: 1px solid var(--text-light-gray);
 }
+
+.profile-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-input,
+.profile-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--text-light-gray);
+  border-radius: 5px;
+  background-color: var(--bg-input);
+  color: var(--text-main);
+}
+
+.profile-save-btn {
+  padding: 10px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.profile-save-btn:hover {
+  opacity: 0.8;
+}
+
+/* Стили для режима просмотра */
+.profile-card {
+  background-color: var(--bg-chat);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+  margin-top: 0;
+  color: var(--text-main);
+}
+
+.profile-bio {
+  color: var(--text-gray);
+  white-space: pre-wrap;
+}
+
+.profile-edit-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: #007AFF;
+  border: 1px solid #007AFF;
+  border-radius: 5px;
+  cursor: pointer;
+}
