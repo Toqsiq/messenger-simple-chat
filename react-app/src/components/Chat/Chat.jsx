@@ -83,6 +83,17 @@ function Chat() {
         }
 
         setMessages([...messages, ...newMessages]);
+        const savedChats = JSON.parse(localStorage.getItem('chat-list')) || [];
+
+
+        const lastMsg = newMessages[newMessages.length - 1];
+
+
+        if (savedChats.length > 0) {
+            savedChats[0].lastMessage = lastMsg.text;
+            savedChats[0].time = lastMsg.time;
+            localStorage.setItem('chat-list', JSON.stringify(savedChats));
+        }
         setInputText('');
     };
 

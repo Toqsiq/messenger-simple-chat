@@ -1,8 +1,17 @@
+import { Link } from 'react-router-dom';
 import { usePageMeta } from '../../hooks/usePageMeta';
+import './Home.css'; // Не забудь создать этот файл
 
 function Home() {
     usePageMeta('Главная', '🏠');
-    return <h2>Главная страница</h2>;
+    return (
+        <div className="home-container">
+            <h2>Добро пожаловать в Мессенджер!</h2>
+            <Link to="/chats" className="btn-go-to-chats">
+                Перейти к чатам
+            </Link>
+        </div>
+    );
 }
 
 export default Home;
