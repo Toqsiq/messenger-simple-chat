@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { usePageMeta } from '../../hooks/usePageMeta';
-import './Home.css'; // Не забудь создать этот файл
+import './Home.css'; 
 
 function Home() {
     usePageMeta('Главная', '🏠');
