@@ -2,7 +2,7 @@ function MessageList({ messages, messagesEndRef }) {
     return (
         <div className="messages-list">
             {messages.map((message, index) => (
-                <div className="message-bubble" key={index}>
+                <div className="message-bubble" key={message.id}>
                     <div className="message-info">
                         <span className="sender">{message.sender}</span>
                         <span className="time">{message.time}</span>

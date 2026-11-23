@@ -44,22 +44,17 @@ function Chat() {
 
         if (text === '') return;
 
-
-
         const time = getCurrentTime();
-
         let newMessages = [];
 
-
         if (text.length > 600) {
-
             const words = text.split(' ');
             let currentChunk = '';
 
             words.forEach(word => {
-
                 if ((currentChunk + word).length > 600) {
                     newMessages.push({
+                        id: crypto.randomUUID(),
                         text: currentChunk.trim(),
                         sender: senderName,
                         time: time
@@ -70,23 +65,22 @@ function Chat() {
                 }
             });
 
-
             if (currentChunk.trim()) {
                 newMessages.push({
+                    id: crypto.randomUUID(),
                     text: currentChunk.trim(),
                     sender: senderName,
                     time: time
                 });
             }
         } else {
-
             newMessages.push({
+                id: crypto.randomUUID(),
                 text: text,
                 sender: senderName,
                 time: time
             });
         }
-
 
         setMessages([...messages, ...newMessages]);
         setInputText('');
