@@ -11,16 +11,17 @@ function getCurrentTime() {
 function Chat() {
     const { id } = useParams();
 
+
     const [senderName] = useState(() => localStorage.getItem('profile-name') || 'Я');
     const [chatName, setChatName] = useState('');
     const [inputText, setInputText] = useState('');
-    const messagesEndRef = useRef(null);
-
-
     const [messages, setMessages] = useState(() => {
         const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
         return saved.filter(msg => msg.chatId === id || !msg.chatId);
     });
+
+
+    const messagesEndRef = useRef(null);
 
 
     useEffect(() => {
@@ -29,36 +30,29 @@ function Chat() {
         if (currentChat) {
             setChatName(currentChat.name);
             if (!currentChat.isRead) {
-
                 const updatedChats = chats.map(c =>
                     c.id === id ? { ...c, isRead: true } : c
                 );
                 localStorage.setItem('chat-list', JSON.stringify(updatedChats));
             }
-
         }
     }, [id]);
 
     usePageMeta(chatName || 'Чат', '💬');
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
-
         const otherMessages = saved.filter(msg => msg.chatId && msg.chatId !== id);
-
         const currentMessages = messages.map(msg => ({ ...msg, chatId: id }));
-
         const updatedHistory = [...otherMessages, ...currentMessages];
         localStorage.setItem('chat-history', JSON.stringify(updatedHistory));
-
         scrollToBottom();
     }, [messages, id]);
 
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     const clearChat = () => {
         if (window.confirm('Очистить все сообщения в этом чате?')) {
@@ -70,10 +64,8 @@ function Chat() {
     };
 
     const handleDeleteMessage = (messageId) => {
-
         const updatedMessages = messages.filter(msg => msg.id !== messageId);
         setMessages(updatedMessages);
-
 
         const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
         const updatedHistory = saved.filter(msg => msg.id !== messageId);
@@ -87,7 +79,6 @@ function Chat() {
 
         const time = getCurrentTime();
         let newMessages = [];
-
 
         if (text.length > 600) {
             const words = text.split(' ');
@@ -128,18 +119,17 @@ function Chat() {
         }
 
         setMessages([...messages, ...newMessages]);
+        setInputText('');
+
         const savedChats = JSON.parse(localStorage.getItem('chat-list')) || [];
         const lastMsg = newMessages[newMessages.length - 1];
-
         const updatedChats = savedChats.map(chat => {
             if (chat.id === id) {
                 return { ...chat, lastMessage: lastMsg.text, time: lastMsg.time };
             }
             return chat;
         });
-
         localStorage.setItem('chat-list', JSON.stringify(updatedChats));
-        setInputText('');
     };
 
     return (
@@ -151,7 +141,6 @@ function Chat() {
             </div>
 
             <div className="chat-wrapper">
-
                 <div style={{ padding: '15px', borderBottom: '1px solid var(--text-light-gray)', fontWeight: 'bold', fontSize: '18px', color: 'var(--text-main)' }}>
                     {chatName || 'Чат'}
                 </div>
@@ -161,6 +150,7 @@ function Chat() {
                     messagesEndRef={messagesEndRef}
                     onDeleteMessage={handleDeleteMessage}
                 />
+
                 <MessageForm
                     inputText={inputText}
                     setInputText={setInputText}
