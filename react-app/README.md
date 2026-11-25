@@ -32,3 +32,4 @@ If you are developing a production application, we recommend using TypeScript wi
    npm install
    npm run dev
    Откройте в браузере ссылку, которую покажет терминал (обычно http://localhost:5173).
+   
