@@ -28,6 +28,14 @@ function Chat() {
         const currentChat = chats.find(c => c.id === id);
         if (currentChat) {
             setChatName(currentChat.name);
+            if (!currentChat.isRead) {
+
+                const updatedChats = chats.map(c =>
+                    c.id === id ? { ...c, isRead: true } : c
+                );
+                localStorage.setItem('chat-list', JSON.stringify(updatedChats));
+            }
+
         }
     }, [id]);
 
@@ -59,6 +67,17 @@ function Chat() {
             localStorage.setItem('chat-history', JSON.stringify(updatedHistory));
             setMessages([]);
         }
+    };
+
+    const handleDeleteMessage = (messageId) => {
+
+        const updatedMessages = messages.filter(msg => msg.id !== messageId);
+        setMessages(updatedMessages);
+
+
+        const saved = JSON.parse(localStorage.getItem('chat-history')) || [];
+        const updatedHistory = saved.filter(msg => msg.id !== messageId);
+        localStorage.setItem('chat-history', JSON.stringify(updatedHistory));
     };
 
     const handleSubmit = (e) => {
@@ -110,7 +129,7 @@ function Chat() {
 
         setMessages([...messages, ...newMessages]);
         const savedChats = JSON.parse(localStorage.getItem('chat-list')) || [];
-        const lastMsg = newMessages[newMessages.length - 1]; 
+        const lastMsg = newMessages[newMessages.length - 1];
 
         const updatedChats = savedChats.map(chat => {
             if (chat.id === id) {
@@ -132,12 +151,16 @@ function Chat() {
             </div>
 
             <div className="chat-wrapper">
-                { }
+
                 <div style={{ padding: '15px', borderBottom: '1px solid var(--text-light-gray)', fontWeight: 'bold', fontSize: '18px', color: 'var(--text-main)' }}>
                     {chatName || 'Чат'}
                 </div>
 
-                <MessageList messages={messages} messagesEndRef={messagesEndRef} />
+                <MessageList
+                    messages={messages}
+                    messagesEndRef={messagesEndRef}
+                    onDeleteMessage={handleDeleteMessage}
+                />
                 <MessageForm
                     inputText={inputText}
                     setInputText={setInputText}

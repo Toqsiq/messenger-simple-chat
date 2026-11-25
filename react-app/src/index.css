@@ -199,7 +199,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
   width: 100%;
+
+
+  padding: 20px 0;
 }
 
 
@@ -302,4 +307,33 @@ body {
   border: 1px solid #007AFF;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.message-bubble {
+  position: relative;
+
+}
+
+.delete-msg-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  color: var(--text-gray);
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+
+  transition: opacity 0.2s;
+}
+
+.message-bubble:hover .delete-msg-btn {
+  opacity: 1;
+
+}
+
+.delete-msg-btn:hover {
+  color: #ff4d4f;
+
 }

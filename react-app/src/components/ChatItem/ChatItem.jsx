@@ -23,10 +23,13 @@ function ChatItem({ id, avatar, name, lastMessage, time, isRead, onDelete }) {
             </Link>
 
             { }
-            <button className="delete-chat-btn" onClick={(e) => {
-                e.preventDefault();
-                onDelete(id);
-            }}>
+            <button
+                className="delete-chat-btn"
+                onClick={(e) => {
+                    e.preventDefault();
+                    onDelete(id);
+                }}
+            >
                 <span className="material-icons">delete</span>
             </button>
         </div>

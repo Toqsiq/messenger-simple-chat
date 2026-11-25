@@ -5,6 +5,9 @@
     padding: 16px;
     background-color: var(--bg-chat);
     border-bottom: 1px solid var(--text-light-gray);
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 64px;
 }
 
 .header-title {
@@ -46,6 +49,9 @@
     color: var(--text-main);
     font-size: 14px;
     outline: none;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .header-search-input:focus {
