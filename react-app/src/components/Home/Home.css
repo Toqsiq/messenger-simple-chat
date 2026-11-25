@@ -1,0 +1,32 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+    text-align: center;
+    padding: 20px;
+}
+
+.home-container h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--text-main);
+}
+
+.btn-go-to-chats {
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-go-to-chats:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}

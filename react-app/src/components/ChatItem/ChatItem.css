@@ -1,0 +1,149 @@
+.chat-item-link {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    min-width: 0;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.chat-item:hover {
+    background-color: var(--bg-messages);
+}
+
+.chat-item-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+
+}
+
+.chat-item-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+
+    padding-right: 10px;
+}
+
+.chat-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 10px;
+
+}
+
+.chat-item-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.chat-item-time {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.chat-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.chat-item-last-message {
+    font-size: 14px;
+    color: var(--text-gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
+.chat-item-check {
+    font-size: 14px;
+    color: var(--text-gray);
+
+    transition: color 0.3s;
+}
+
+.chat-item-check.read {
+    color: var(--color-primary);
+
+}
+
+.chat-item-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--text-light-gray);
+    width: 100%;
+    overflow: hidden;
+}
+
+.chat-item-wrapper .chat-item {
+    flex: 1;
+    border-bottom: none;
+}
+
+.delete-chat-btn {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+
+.chat-item-wrapper:hover .delete-chat-btn {
+    opacity: 1;
+
+}
+
+.delete-chat-btn:hover {
+    color: #ff4d4f;
+
+}
+
+.chat-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+
+    padding-right: 10px;
+
+}
